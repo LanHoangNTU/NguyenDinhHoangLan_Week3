@@ -1,0 +1,39 @@
+﻿@{ 
+    var path = Server.MapPath("/banner.txt");
+    var fileImage = System.IO.File.ReadAllText(path);
+    ViewBag.image = "/Images/" + fileImage;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/MailStyle.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/RegisterStyle.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-3.3.1.js" type="text/javascript"></script>
+</head>
+<body>
+    <div>
+        <img class="banner" src="@ViewBag.image" />
+    </div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active">@Html.ActionLink("TRANG CHỦ", "Home", "Layout", "", htmlAttributes: new { @class = "" })</li>
+                <li>@Html.ActionLink("ĐĂNG KÝ", "Register", "Layout", "", htmlAttributes: new { @class = "" })</li>
+                <li>@Html.ActionLink("GỬI EMAIL", "Mail", "Layout", "", htmlAttributes: new { @class = "" })</li>
+                <li>@Html.ActionLink("THAY ĐỔI BANNER", "Banner", "Layout", "", htmlAttributes: new { @class = "" })</li>
+            </ul>
+        </div>
+    </nav>
+    <div>
+        @RenderBody()
+    </div>
+    <footer>
+        Copyright &copy; LÂN   @DateTime.Now.ToShortDateString()
+    </footer>
+</body>
+</html>

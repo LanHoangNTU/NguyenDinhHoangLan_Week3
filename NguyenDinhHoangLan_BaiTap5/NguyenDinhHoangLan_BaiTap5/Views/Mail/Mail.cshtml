@@ -1,0 +1,55 @@
+﻿@model NguyenDinhHoangLan_BaiTap5.Models.MailInfo
+
+@{
+    ViewBag.Title = "Mail";
+    Layout = "~/Views/Shared/_ Bt5Layout.cshtml";
+}
+
+<link href="~/Content/MailStyle.css" rel="stylesheet" type="text/css" />
+
+@using (Html.BeginForm("Mail", "Mail", FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+
+<div class="box-2">
+    <div class="row inner-box">
+        <div style="width: 100%; text-align:center; margin-bottom: 1.5em;"><h4>CHỨC NĂNG GỬI EMAIL</h4></div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-lg-4">@Html.LabelFor(model => model.From, htmlAttributes: new { @class = "control-label float-right-lg" })</div>
+        <div class="col-lg-8">
+            @Html.TextBoxFor(model => model.From, new { htmlAttributes = new { @class = "" } })<br />
+            @Html.ValidationMessageFor(model => model.From, "", new { @class = "text-danger" })
+        </div>
+        <br />
+        <div class="col-lg-4">@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label float-right-lg" })</div>
+        <div class="col-lg-8">
+            @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "" } })<br />
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+        <br />
+        <div class="col-lg-4">@Html.LabelFor(model => model.To, htmlAttributes: new { @class = "control-label float-right-lg" })</div>
+        <div class="col-lg-8">
+            @Html.TextBoxFor(model => model.To, new { htmlAttributes = new { @class = "" } })<br />
+            @Html.ValidationMessageFor(model => model.To, "", new { @class = "text-danger" })
+        </div>
+        <br />
+        <div class="col-lg-4">@Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label float-right-lg" })</div>
+        <div class="col-lg-8">
+            @Html.TextBoxFor(model => model.Subject, new { htmlAttributes = new { @class = "" } })<br />
+            @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+        </div>
+        <br />
+        <div class="col-lg-4">@Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label float-right-lg" })</div>
+        <div class="col-lg-8">
+            @Html.TextAreaFor(model => model.Body, new { htmlAttributes = new { @class = "" } })<br />
+            @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+        </div>
+        <br />
+        <div class="col-lg-4"></div>
+        <div class="col-lg-8">
+            <input type="submit" value="Gửi email" class="btn btn-default" />
+        </div>    
+    </div>
+</div>
+}
